@@ -1,10 +1,11 @@
-
+require('dotenv').config();
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
+const mongo_url = process.env.MONGO_URL;
 
 
-mongoose.connect('mongodb://localhost/quotes_development_sashimi');
+mongoose.connect(mongo_url);
 
 // create a variable that points to the path
 //  where all of the model live

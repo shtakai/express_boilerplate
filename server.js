@@ -1,10 +1,13 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const app = express();
+const port = process.env.PORT || 3000
 
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 // static content
 app.use(express.static(path.join(__dirname, './client/static')));
@@ -25,14 +28,14 @@ let routes_setter = require('./server/config/routes.js');
 routes_setter(app);
 
 // tell the express app to listen on port 8000
-let server = app.listen(8000, function(){
-  console.log('8000!');
+let server = app.listen(port, function(){
+  console.log(`server listen on #${port}`);
 });
 
 let io = require('socket.io').listen(server);
 io.on('connection', sockets =>{
-  console.log('connection')
-  sockets.on('test', data => {
-    console.log('test', data);
-  })
+  //console.log('connection')
+  //sockets.on('test', data => {
+    //console.log('test', data);
+  //})
 })

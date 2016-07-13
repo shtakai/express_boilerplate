@@ -1,3 +1,4 @@
+// this is sample controller
 
 const mongoose = require('mongoose');
 const Quote = mongoose.model('Quote');

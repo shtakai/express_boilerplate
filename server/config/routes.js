@@ -1,11 +1,14 @@
 
 const mongoose = require('mongoose');
-const Quote = mongoose.model('Quote');
 
+
+//declare model and controller
+const Quote = mongoose.model('Quote');
 let quotes = require('../controllers/quotes.js');
 
 module.exports = function(app){
 
+  // render -> client/views/index.ejs
   app.get('/', function(req, res){
     res.render('index');
   })
@@ -14,9 +17,6 @@ module.exports = function(app){
     quotes.create(req, res);
   })
 
-  app.get('/main', function(req,res){
-    quotes.show(req, res);
-  })
 
 
 }
